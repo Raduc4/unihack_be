@@ -21,6 +21,9 @@ export class DoctorRepository {
     return newUser;
   }
 
+  async findOne(id: string) {
+    return this.prismaService.doctors.findUnique({ where: { id } });
+  }
   async findUserByEmail(email: string) {
     const user = await this.prismaService.doctors.findUnique({
       where: {

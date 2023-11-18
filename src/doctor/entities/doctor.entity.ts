@@ -1,13 +1,13 @@
-import { IUser } from '../doctor.interface';
+import { IDoctor } from '../doctor.interface';
 
-export class UserEntity implements IUser {
+export class UserEntity implements IDoctor {
   _id?: string;
   username: string;
   phone: string;
   email: string;
   doctorType: string;
 
-  constructor(user: IUser) {
+  constructor(user: IDoctor) {
     this._id = user._id;
     this.username = user.username;
     this.email = user.email;

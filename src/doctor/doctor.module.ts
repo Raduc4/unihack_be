@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { DoctorService } from './doctor.service';
 import { UserController } from './doctor.controller';
-import { UserRepository } from './repository/doctor.repository';
+import { DoctorRepository } from './repository/doctor.repository';
 import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [],
-  providers: [DoctorService, UserRepository, JwtService],
+  providers: [DoctorService, DoctorRepository, JwtService],
   controllers: [UserController],
-  exports: [UserRepository, DoctorService],
+  exports: [DoctorRepository, DoctorService],
 })
 export class UserModule {}
