@@ -3,6 +3,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { UserEntity } from '../entities/doctor.entity';
+import { SpecificDoctorsFiltersDTO } from '../dto/SpecificDoctors.dto';
 @Injectable()
 export class DoctorRepository {
   constructor(
@@ -16,6 +17,8 @@ export class DoctorRepository {
         email: user.email,
         phone: user.phone,
         doctorType: user.doctorType,
+        subType: user.subType,
+        location: user.location,
       },
     });
     return newUser;
@@ -42,6 +45,14 @@ export class DoctorRepository {
 
   async findMany() {
     return this.prismaService.doctors.findMany();
+  }
+
+  async getSpecificDoctors(filters: SpecificDoctorsFiltersDTO) {
+    return this.prismaService.doctors.findMany({
+      where: {
+        doctorType: filters.type,
+      },
+    });
   }
 
   async findUserById(id: string) {

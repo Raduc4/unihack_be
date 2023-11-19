@@ -6,6 +6,8 @@ export class UserEntity implements IDoctor {
   phone: string;
   email: string;
   doctorType: string;
+  subType: string;
+  location: string;
 
   constructor(user: IDoctor) {
     this._id = user._id;
@@ -13,5 +15,7 @@ export class UserEntity implements IDoctor {
     this.email = user.email;
     this.phone = user.phone;
     this.doctorType = user.doctorType;
+    this.subType = user.subType;
+    this.location = user.subType;
   }
 }

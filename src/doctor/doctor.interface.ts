@@ -4,4 +4,6 @@ export interface IDoctor {
   email: string;
   phone: string;
   doctorType: string;
+  subType: string;
+  location: string;
 }

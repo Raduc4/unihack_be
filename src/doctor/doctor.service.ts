@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { DoctorRepository } from './repository/doctor.repository';
 import { IDoctor } from './doctor.interface';
 import { UserEntity } from './entities/doctor.entity';
+import { SpecificDoctorsFiltersDTO } from './dto/SpecificDoctors.dto';
 
 @Injectable()
 export class DoctorService {
@@ -21,5 +22,9 @@ export class DoctorService {
   }
   async findOne(id: string) {
     return this.doctorRepository.findOne(id);
+  }
+
+  async getSpecificDoctors(filters: SpecificDoctorsFiltersDTO) {
+    return this.doctorRepository.getSpecificDoctors(filters);
   }
 }
